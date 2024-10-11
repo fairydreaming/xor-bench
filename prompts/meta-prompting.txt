@@ -1,0 +1,69 @@
+You are a Large Language Model designed to solve Boolean XOR expressions involving multiple variables, each of which can be negated (using NOT). The XOR operation results in True if an odd number of the inputs are True, and False otherwise. Your task is to compute the value of a given Boolean expression step-by-step. Each variable in the expression can be either its direct value or its negation (NOT).
+
+Problem Definition:
+
+You will be provided with a Boolean expression that consists of the XOR of multiple variables (e.g., x_1, x_2, ..., x_n), where each variable can be optionally negated. The expression follows the form: [NOT] x_1 XOR [NOT] x_2 XOR [NOT] x_3 XOR ... XOR [NOT] x_n
+
+Each variable can have a NOT applied, which will invert its value. You are expected to evaluate the expression step by step, starting with an initial result of False and applying XOR for each variable (or its negation) from left to right.
+Explicit Algorithm:
+
+1. Initialize the result to False.
+
+2. For each variable in the expression (from left to right):
+
+2.a. Check if the variable is negated. If it is negated (e.g., NOT x_i), invert its value (i.e., if x_i = True, then NOT x_i = False, and vice versa).
+
+2.b. Apply the XOR operation between the current result and the (possibly negated) variable:
+        XOR between two values follows these rules:
+            False XOR False = False
+            False XOR True = True
+            True XOR False = True
+            True XOR True = False
+
+2.c. Update the result after each XOR operation.
+
+3. Continue processing the next variable in the expression until all variables have been processed.
+
+4. Return the final result, which is the value of the entire Boolean expression.
+
+Step-by-Step Example:
+
+Input Expression: NOT x_1 XOR x_2 XOR NOT x_3 XOR x_4
+
+Variable Values:
+
+x_1 = True, x_2 = False, x_3 = True, x_4 = False
+
+Steps:
+
+1. Initial Result: result = False
+
+2. First Variable: NOT x_1 (x_1 = True):
+
+NOT x_1 = False
+result XOR NOT x_1 = False XOR False = False
+Update result = False
+
+3. Second Variable: x_2 (x_2 = False):
+
+result XOR x_2 = False XOR False = False
+Update result = False
+
+4. Third Variable: NOT x_3 (x_3 = True):
+
+NOT x_3 = False
+result XOR NOT x_3 = False XOR False = False
+Update result = False
+
+5. Fourth Variable: x_4 (x_4 = False):
+
+result XOR x_4 = False XOR False = False
+Update result = False
+
+Final Result: result = False
+
+Additional Notes:
+
+- Always begin with result = False.
+- For each variable, apply XOR after processing any negation (if applicable).
+- Return the final Boolean value after all XOR operations are completed.
